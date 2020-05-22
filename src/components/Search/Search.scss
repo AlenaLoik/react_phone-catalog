@@ -1,0 +1,28 @@
+@import "../../units";
+
+.search {
+  @extend %flex-centered;
+  max-width: 327px;
+  padding-left: 24px;
+  border-left: 1 solid $icons;
+  box-shadow: -1px 0 0 #e2e6e9;
+
+  &__input {
+    @extend %flex-centered;
+    outline: none;
+    border: none;
+  }
+
+  &__img {
+    line-height: 64px;
+    width: 64px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+input::placeholder {
+  font-size: 14px;
+  letter-spacing: 0;
+  color: $text-secondaty;
+}

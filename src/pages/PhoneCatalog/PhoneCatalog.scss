@@ -1,0 +1,28 @@
+@import "../../units";
+
+.phones {
+  list-style: none;
+}
+
+.nav-location {
+  @extend %text-small;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+
+  &__svg--arrow {
+    padding: 0 14px;
+    transform: rotate(90deg);
+  }
+}
+
+.phones-page {
+  &__title {
+    margin-top: 36px;
+    margin-bottom: 8px;
+  }
+
+  &__counter {
+    @extend %text-small;
+  }
+}
