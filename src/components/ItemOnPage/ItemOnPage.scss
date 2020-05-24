@@ -1,0 +1,33 @@
+@import "../../units";
+
+.select-for-page {
+  display: flex;
+  flex-direction: column;
+
+  &__option {
+    border: 1px solid $icons;
+    box-sizing: border-box;
+    width: 128px;
+    height: 40px;
+    display: block;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    margin: 0;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,0.04);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  &__svg {
+    transform: rotate(180deg);
+    position: absolute;
+    margin-top: 36px;
+    margin-left: 100px;
+    fill: $icons;
+  }
+
+  &__text {
+    @extend %text-small;
+    padding-bottom: 4px;
+  }
+}

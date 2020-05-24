@@ -14,10 +14,20 @@
   }
 
   &__img {
-    line-height: 64px;
-    width: 64px;
+    line-height: 32px;
+    width: 32px;
     text-align: center;
     box-sizing: border-box;
+    font-size: 26px;
+    margin-right: 10px;
+    border-radius: 50%;
+
+    &--remuve {
+      background-color: $white;
+      border: none;
+      transform: rotate(45deg);
+      color: $text-primary;
+    }
   }
 }
 

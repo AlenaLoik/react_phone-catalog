@@ -4,6 +4,11 @@
   list-style: none;
 }
 
+.loading {
+  @extend %text-body;
+  color: $text-primary;
+}
+
 .nav-location {
   @extend %text-small;
   margin-top: 20px;
@@ -24,5 +29,12 @@
 
   &__counter {
     @extend %text-small;
+    margin-bottom: 14px;
+  }
+
+  &__sorting {
+    display: flex;
+    margin-bottom: 24px;
+    margin-top: 40px;
   }
 }

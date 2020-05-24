@@ -1,0 +1,56 @@
+@import "../../units";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__button {
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    box-sizing: border-box;
+    background-color: $white;
+    margin: 0 12px;
+    transition: 0.3s;
+    &:hover {
+      border-color: $text-primary;
+    }
+
+    &--right > svg {
+      fill: $text-primary;
+      margin-bottom: 2px;
+
+      transform: rotate(90deg);
+    }
+
+    &--left > svg {
+      fill: $text-primary;
+      margin-bottom: 2px;
+      transform: rotate(-90deg);
+    }
+
+    &--page {
+      margin: 0 4px;
+      border-color: $elements;
+    }
+  }
+
+}
+
+.active {
+  background-color: $text-primary;
+  color: $white;
+  border: none;
+}
+
+.disabled {
+  border-color: $elements;
+  &:hover {
+    border-color: $elements;
+  }
+
+  & > svg {
+    fill: $elements;
+  }
+}

@@ -1,6 +1,14 @@
 .products {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: -16px;
+
+  &--active {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }
 
 .product {
