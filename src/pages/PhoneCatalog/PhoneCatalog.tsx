@@ -1,21 +1,19 @@
 import React from 'react';
 import './PhoneCatalog.scss';
 import { IProduct } from '../../interfase/interfase';
-import { useEffect, useState } from 'react';
-import { useParams, RouteComponentProps, Link } from 'react-router-dom';
+import { useParams, Link, useHistory, useLocation } from 'react-router-dom';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { Sort } from '../../components/Sort/Sort';
 import { ItemOnPage } from '../../components/ItemOnPage/ItemOnPage';
-import { getProduct } from '../../helpers/api';
 import { Pagination } from '../../components/Pagination/Pagination';
 
-type Props = RouteComponentProps<{
-  phoneName: string;
-}>;
+type Props = {
+  phones: IProduct[];
+};
 
-export const PhoneCatalog: React.FC<Props> = ({ history, location }) => {
-  const [phones, setphones] = useState<IProduct[]>([]);
-
+export const PhoneCatalog: React.FC<Props> = ({ phones }) => {
+  const history = useHistory();
+  const location = useLocation();
   const { phoneName } = useParams();
 
   const searchParams = new URLSearchParams(location.search);
@@ -41,10 +39,6 @@ export const PhoneCatalog: React.FC<Props> = ({ history, location }) => {
       }
     })
     .slice(start, start + perPage);
-
-  useEffect(() => {
-    getProduct().then(setphones)
-  }, []);
 
   if (phones.length === 0) {
     return <p className="loading">Loading...</p>;

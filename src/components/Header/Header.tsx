@@ -13,10 +13,16 @@ export const Header = () => (
       <Route path="/phones">
         <Search />
       </Route>
+      <Route path="/tablets">
+        <Search />
+      </Route>
+      <Route path="/favorites">
+        <Search />
+      </Route>
 
     </div>
     <div className="header__action">
-      <NavLink to="/Favoeits"
+      <NavLink to="/favorites"
       className="header__link__favorits"
       activeClassName="header__link__favorits--active">
         <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">

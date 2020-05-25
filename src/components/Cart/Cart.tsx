@@ -15,13 +15,11 @@ export const Cart: React.FC<Props> = ({ phone }) => {
 
   const priceWithDiscount = `$${price - (price * (discount / 100))}`;
   const price$ = `$${price}`;
-  const corectSrc = `../../../${imageUrl}`;
-
 
   return (
     <div className="item">
       <div className="item__picture">
-        <img className="item__img" src={corectSrc} alt="monoblock" />
+        <img className="item__img" src={imageUrl} alt="monoblock" />
       </div>
       <div className="item__title">
         <Link to={`/phones/${name}`}>

@@ -1,0 +1,8 @@
+@import "../../units";
+
+.slider {
+  @extend %flex-centered;
+  max-width: 1136px;
+  max-height: 432px;
+  background-color: palegoldenrod;
+}

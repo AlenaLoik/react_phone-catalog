@@ -10,7 +10,7 @@ export const Footer = () => {
       window.scrollTo(0, i);
       i -= 40;
       if (i <= -40) clearInterval(int);
-    }, 20);
+    }, 10);
   };
 
   return (

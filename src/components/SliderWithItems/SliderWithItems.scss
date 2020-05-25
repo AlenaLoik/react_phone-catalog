@@ -1,0 +1,15 @@
+.slider-item {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    padding-top: 40px;
+  }
+
+  &__buttons > button {
+    margin: 0 8px;
+  }
+}
