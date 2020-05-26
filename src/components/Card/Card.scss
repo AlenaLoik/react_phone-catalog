@@ -34,7 +34,7 @@
     display: flex;
     width: 100%;
 
-    & a {
+    & a .active {
       @extend %text-body;
       color: $text-primary;
       height: 42px;

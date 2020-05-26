@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import './Cart.scss';
-import { Link } from 'react-router-dom';
+import './Card.scss';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { IProduct } from '../../interfase/interfase';
 
 type Props = {
   phone: IProduct;
 };
 
-export const Cart: React.FC<Props> = ({ phone }) => {
+export const Card: React.FC<Props> = ({ phone }) => {
   const [favorites, setFavorites] = useState(false);
   const [itemOnBascket, setItemOnBascket] = useState(false);
+  const history = useHistory();
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
 
   const { price, ram, imageUrl, discount, name, screen, capacity } = phone;
 
@@ -19,12 +23,21 @@ export const Cart: React.FC<Props> = ({ phone }) => {
   return (
     <div className="item">
       <div className="item__picture">
-        <img className="item__img" src={imageUrl} alt="monoblock" />
+        <img className="item__img" src={imageUrl} alt={name} />
       </div>
       <div className="item__title">
-        <Link to={`/phones/${name}`}>
+        <NavLink
+        to={`/products/${phone.id}`}
+        className="item__title__link"
+        onClick={(event) => {
+          const target = event.target as HTMLTextAreaElement;
+          searchParams.set('itemId', target.value)
+          history.push({
+            search: searchParams.toString()
+          });
+        }}>
           {phone.name}
-        </Link>
+        </NavLink>
       </div>
       <span className="item__price">
         <p className="item__price--discount">{priceWithDiscount}</p>

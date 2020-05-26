@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductListSlider.scss';
 import { IProduct } from '../../interfase/interfase';
-import { Cart } from '../Cart/Cart';
+import { Card } from '../Card/Card';
 
 type Props = {
   items: IProduct[];
@@ -15,7 +15,7 @@ export const ProductListSlider: React.FC<Props> = ({ items, left }) => (
       key={item.name}
       className="product-list-slider__item"
     >
-      <Cart phone={item} />
+      <Card phone={item} />
     </li>
   ))}
 </ul>

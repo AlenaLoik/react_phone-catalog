@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductList.scss';
 import { IProduct } from '../../interfase/interfase';
 import classnames from 'classnames';
-import { Cart } from '../Cart/Cart';
+import { Card } from '../Card/Card';
 
 type Props = {
   phones: IProduct[];
@@ -20,7 +20,7 @@ export const ProductList: React.FC<Props> = ({ search, phones, phoneName }) => (
         'product--active': phoneName === phone.name,
       })}
     >
-      <Cart phone={phone} />
+      <Card phone={phone} />
     </li>
   ))}
 </ul>

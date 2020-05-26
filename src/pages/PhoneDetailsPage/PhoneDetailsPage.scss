@@ -1,0 +1,14 @@
+@import "../../units";
+
+.nav-location {
+  &__svg--arrow {
+    &--back {
+      transform: rotate(-90deg);
+      margin-left: -16px;
+    }
+  }
+}
+
+.nav-location__text--back {
+  color: $text-secondaty;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import './App.scss';
-import { Switch, Route} from 'react-router-dom';
+import { Switch, Route, useLocation} from 'react-router-dom';
 import { getProduct } from './helpers/api';
 import { IProduct } from './interfase/interfase';
 
@@ -16,9 +16,12 @@ import { PhoneDetailsPage } from './pages/PhoneDetailsPage/PhoneDetailsPage';
 
 const App = () => {
   const [items, setItems] = useState<IProduct[]>([]);
+  const location = useLocation();
 
   const phones = items.filter(phone => (phone.type === "phone"));
-  const tablets = items.filter(tablet => (tablet.type === "tablet"))
+  const tablets = items.filter(tablet => (tablet.type === "tablet"));
+  const searchParams = new URLSearchParams(location.search);
+  const itemId: string = searchParams.get('itemId') || "";
 
   useEffect(() => {
     getProduct().then(setItems)
@@ -44,7 +47,7 @@ const App = () => {
           <Route path="/favorites">
             <Favorites />
           </Route>
-          <Route path={`/phones/:phoneName?`}>
+          <Route path={`/products/${itemId}`}>
             <PhoneDetailsPage items={items}/>
           </Route>
           <Route path="/" exact>
