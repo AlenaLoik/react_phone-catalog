@@ -1,8 +1,54 @@
 @import "../../units";
 
 .slider {
-  @extend %flex-centered;
-  max-width: 1136px;
-  max-height: 432px;
-  background-color: palegoldenrod;
+  margin-top: 40px;
+  &__main {
+    @extend %flex-centered;
+
+    &__wraper {
+      position: relative;
+      overflow: hidden;
+      width: 1040px;
+      margin: 0;
+
+    }
+
+    &__images {
+      display: flex;
+      height: 400px;
+      list-style: none;
+      transition: 0.7s;
+    }
+
+    &__image {
+      & > img {
+        width: 1040px;
+        min-height: 400px;
+      }
+
+    }
+
+    & > .pagination__button {
+      height: 400px;
+      margin: 0;
+      cursor: pointer;
+    }
+  }
+  &__naw {
+    @extend %flex-centered;
+    justify-content: center;
+    height: 32px;
+    margin-left: -14px;
+
+    &--button {
+      background-color: $elements;
+      width: 14px;
+      height: 4px;
+      margin-right: 14px;
+
+      & .active {
+        background-color: $text-primary;
+      }
+    }
+  }
 }

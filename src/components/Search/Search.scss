@@ -11,6 +11,7 @@
     @extend %flex-centered;
     outline: none;
     border: none;
+    cursor: unset;
   }
 
   &__img {

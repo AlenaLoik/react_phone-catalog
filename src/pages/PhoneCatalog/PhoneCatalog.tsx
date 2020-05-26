@@ -41,7 +41,9 @@ export const PhoneCatalog: React.FC<Props> = ({ phones }) => {
     .slice(start, start + perPage);
 
   if (phones.length === 0) {
-    return <p className="loading">Loading...</p>;
+    return (
+      <><div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div><h1>Loading...</h1></>
+    );
   }
 
   if (phoneName && !phones.some(p => p.name === phoneName)) {

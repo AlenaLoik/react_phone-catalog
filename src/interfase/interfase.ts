@@ -61,3 +61,8 @@ export interface IProduct {
   capacity: string;
   ram: string;
 }
+
+export interface IImges {
+  id: number;
+  url: string;
+}

@@ -23,7 +23,7 @@ export const Footer = () => {
             </a>
         </li>
         <li className="footer__item">
-          <a href="#" className="footer__link">
+          <a href="https://docs.google.com/document/d/1iySEp5jUAeVVIlg449jUn1rV6RPRqLCl/edit" className="footer__link">
             Contacts
             </a>
         </li>

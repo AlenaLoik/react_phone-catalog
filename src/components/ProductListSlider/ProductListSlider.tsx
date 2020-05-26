@@ -5,10 +5,11 @@ import { Cart } from '../Cart/Cart';
 
 type Props = {
   items: IProduct[];
+  left: number;
 };
 
-export const ProductListSlider: React.FC<Props> = ({ items }) => (
-  <ul className="product-list-slider__items">
+export const ProductListSlider: React.FC<Props> = ({ items, left }) => (
+  <ul className="product-list-slider__items" style={{ margin: `0 0 0 ${left}px` }}>
   {items.map((item) => (
     <li
       key={item.name}

@@ -1,10 +1,7 @@
 .product-list-slider {
   &__items {
     display: flex;
-    overflow: hidden;
-
+    list-style: none;
+    transition: 0.5s;
   }
-
-  // &__item {
-  // }
 }
