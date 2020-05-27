@@ -16,7 +16,6 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
   const history = useHistory();
   const location = useLocation();
   const { tabletName } = useParams();
-
   const searchParams = new URLSearchParams(location.search);
   const query: string = searchParams.get('query') || '';
   const sort: string = searchParams.get('sort') || '';

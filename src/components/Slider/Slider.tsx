@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './Slider.scss';
 
 const imagesArr = [
@@ -15,9 +15,10 @@ export const Slider = () => {
   const itemWidth = 1040;
   const maxWhidth = -(itemWidth * (imagesArr.length - 1));
 
-   setTimeout(() => {
-    handleChangePageNext()
-  }, 3000);
+
+    setTimeout(() => {
+      handleChangePageNext()
+    }, 3000);
 
   const handleChangePagePrew = () => {
     if (active === 0) {

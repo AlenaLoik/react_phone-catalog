@@ -1,21 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './Card.scss';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { IProduct } from '../../interfase/interfase';
+import { MyContext } from '../../App';
 
 type Props = {
-  phone: IProduct;
+  item: IProduct;
 };
 
-export const Card: React.FC<Props> = ({ phone }) => {
-  const [favorites, setFavorites] = useState(false);
-  const [itemOnBascket, setItemOnBascket] = useState(false);
+// type Props = {
+//   value: number;
+//   age: number;
+//   id: number;
+//   type: string;
+//   imageUrl: string;
+//   name: string;
+//   snippet: string;
+//   price: 780,
+//   discount: number;
+//   screen: string;
+//   capacity: string;
+//   ram: string;
+// }
+
+export const Card: React.FC<Props> = ({ item }) => {
+  const { price, ram, imageUrl, discount, name, screen, capacity, id } = item;
+  const {basket, setBasket, favorites, setFavorites} = useContext(MyContext);
+  const [isFavorites, setIsFavorites] = useState(favorites.filter(product => product.id === item.id).length > 0);
+  const [isItemOnBascket, setIsItemOnBascket] = useState(basket.filter(product => product.id === item.id).length > 0);
   const history = useHistory();
   const location = useLocation();
 
-  const searchParams = new URLSearchParams(location.search);
 
-  const { price, ram, imageUrl, discount, name, screen, capacity } = phone;
+  useEffect(() => {
+    setIsFavorites(favorites.filter(product => product.id === item.id).length > 0)
+  }, [favorites])
+
+  useEffect(() => {
+    setIsItemOnBascket(basket.filter(product => product.id === item.id).length > 0);
+  }, [basket])
+
+  const addToBasket = () => {
+    setBasket(
+      [
+        ...basket,
+        item
+      ]
+    );
+  }
+
+  const addToFavorites = () => {
+    if (!isFavorites) {
+      setFavorites([...favorites, item]);
+    } else {
+      setFavorites([...favorites].filter(product => product.id !== item.id));
+    }
+  }
+
+  const searchParams = new URLSearchParams(location.search);
 
   const priceWithDiscount = `$${price - (price * (discount / 100))}`;
   const price$ = `$${price}`;
@@ -27,7 +69,7 @@ export const Card: React.FC<Props> = ({ phone }) => {
       </div>
       <div className="item__title">
         <NavLink
-        to={`/products/${phone.id}`}
+        to={`/products/${id}`}
         className="item__title__link"
         onClick={(event) => {
           const target = event.target as HTMLTextAreaElement;
@@ -36,7 +78,7 @@ export const Card: React.FC<Props> = ({ phone }) => {
             search: searchParams.toString()
           });
         }}>
-          {phone.name}
+          {name}
         </NavLink>
       </div>
       <span className="item__price">
@@ -60,20 +102,16 @@ export const Card: React.FC<Props> = ({ phone }) => {
       </div>
       <div className="item__button">
         <input
-          className={itemOnBascket ? "item__button--add active" : "item__button--add"}
+          className={isItemOnBascket ? "item__button--add active" : "item__button--add"}
           type="button"
-          value={itemOnBascket ? "Remuve from cart" : "Add to cart"}
-          onClick={() => (
-            itemOnBascket ? setItemOnBascket(false) : setItemOnBascket(true)
-          )}
+          value={isItemOnBascket ? "Remuve from cart" : "Add to cart"}
+          onClick={addToBasket}
         />
         <button
           className="item__button--favorites"
           type="button"
-          onClick={() => (
-            favorites ? setFavorites(false) : setFavorites(true)
-          )} >
-          {favorites
+          onClick={addToFavorites} >
+          {isFavorites
             ? <svg className="item__button--svg" version="1.0" xmlns="http://www.w3.org/2000/svg"
               width="16" height="16" viewBox="0 0 1280.000000 1189.000000"
               preserveAspectRatio="xMidYMid meet">

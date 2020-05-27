@@ -15,7 +15,7 @@ export const ProductListSlider: React.FC<Props> = ({ items, left }) => (
       key={item.name}
       className="product-list-slider__item"
     >
-      <Card phone={item} />
+        <Card item={item}/>
     </li>
   ))}
 </ul>

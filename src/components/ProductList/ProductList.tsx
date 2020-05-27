@@ -20,7 +20,7 @@ export const ProductList: React.FC<Props> = ({ search, phones, phoneName }) => (
         'product--active': phoneName === phone.name,
       })}
     >
-      <Card phone={phone} />
+      <Card item={phone}/>
     </li>
   ))}
 </ul>

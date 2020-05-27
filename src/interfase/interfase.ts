@@ -61,3 +61,11 @@ export interface IProduct {
   capacity: string;
   ram: string;
 }
+
+export interface IMyContext {
+  items: IProduct[];
+  basket: IProduct[];
+  setBasket: ([]) => void;
+  favorites: IProduct[];
+  setFavorites: ([]) => void;
+}
