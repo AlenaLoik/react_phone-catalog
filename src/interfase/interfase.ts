@@ -55,7 +55,7 @@ export interface IProduct {
   imageUrl: string;
   name: string;
   snippet: string;
-  price: 780,
+  price: number,
   discount: number;
   screen: string;
   capacity: string;

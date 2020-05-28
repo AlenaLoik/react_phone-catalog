@@ -18,14 +18,13 @@
       border-color: $text-primary;
     }
 
-    &--right > svg {
+    &--right > img {
       fill: $text-primary;
       margin-bottom: 2px;
-
       transform: rotate(90deg);
     }
 
-    &--left > svg {
+    &--left > img {
       fill: $text-primary;
       margin-bottom: 2px;
       transform: rotate(-90deg);

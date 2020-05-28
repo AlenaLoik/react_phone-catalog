@@ -1,24 +1,34 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Basket.scss';
-import { MyContext } from '../../App';
 import { BasketList } from '../../components/BasketList/BasketList';
+import { MyContext } from '../../App';
 
 export const Basket = () => {
-  const {basket} = useContext(MyContext);
+  const { basket } = useContext(MyContext);
+  const sum = (a: number, b: number) => a + b;
+  const totalPrice = basket.map(item => item.price - (item.price * (item.discount / 100))).reduce(sum, 0);
 
   return (
     <div className="basket">
-      <Link to="/phones">
-        <p className="nav-location__text--back">Back</p>
-      </Link>
-      <h1 className="basket__title">Cart</h1>
-      <ul className="basket__items">
-        {basket.map(item => (
-          <BasketList item={item} key={item.id}/>
-        ))}
-      </ul>
-      <div className="basket__total-price"> </div>
+      <section className="basket__header">
+        <Link to="/phones" className="nav-location">
+          <img className="nav-location--img" src="./img/svg/arrow-next.svg" alt="next" />
+          <p className="nav-location__text--back">Back</p>
+        </Link>
+        <h1 className="basket__title">Cart</h1>
+      </section>
+      <section className="basket__main">
+        <ul className="basket__items">
+          <BasketList />
+        </ul>
+        <div className="basket__total-price total-price">
+          <p className="total-price__value">${totalPrice}</p>
+          <p className="total-price__count">Total for {basket.length} items</p>
+          <button className="total-price__button">Checkout</button>
+        </div>
+      </section>
+
     </div>
   );
 }

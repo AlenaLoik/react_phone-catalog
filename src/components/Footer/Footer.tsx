@@ -5,11 +5,11 @@ import { Logo } from '../Logo/Logo';
 export const Footer = () => {
 
   const scrollTop = () => {
-    let i = window.pageYOffset;
-    let int = setInterval(function () {
-      window.scrollTo(0, i);
-      i -= 40;
-      if (i <= -40) clearInterval(int);
+    let heightOfPage = window.pageYOffset;
+    const intervalScrolling = setInterval(function () {
+      window.scrollTo(0, heightOfPage);
+      heightOfPage -= 40;
+      if (heightOfPage <= -40) clearInterval(intervalScrolling);
     }, 10);
   };
 

@@ -10,7 +10,7 @@ import { Footer } from './components/Footer/Footer';
 import { HomePage } from './pages/HomePage/HomePage';
 import { PhoneCatalog } from './pages/PhoneCatalog/PhoneCatalog';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
-import { Favorites } from './components/Favorites/Favorites';
+import { Favorites } from './pages/Favorites/Favorites';
 import { Basket } from './pages/Basket/Basket';
 import { PhoneDetailsPage } from './pages/PhoneDetailsPage/PhoneDetailsPage';
 
@@ -26,7 +26,6 @@ const App = () => {
   const tablets = items.filter(tablet => (tablet.type === "tablet"));
   const searchParams = new URLSearchParams(location.search);
   const itemId: string = searchParams.get('itemId') || "";
-  // const favoritesItems = items.filter(item => (item.f))
 
   useEffect(() => {
     getProduct().then(setItems)
@@ -41,7 +40,7 @@ const App = () => {
       setFavorites: setFavorites,
     }}>
     <div className="App">
-      <Header />
+      <Header favoritesCount={favorites.length} basketCount={basket.length} />
       <main className="main">
         <Switch>
           <Route path="/tablets">
@@ -67,7 +66,7 @@ const App = () => {
       </main>
       <Footer />
     </div>
-    // </MyContext.Provider>
+   </MyContext.Provider>
   );
 }
 

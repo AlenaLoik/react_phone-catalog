@@ -12,16 +12,16 @@ type Props = {
 
 export const ProductList: React.FC<Props> = ({ search, phones, phoneName }) => (
   <ul className={search ? 'products--active' : 'products'}>
-  {phones.map((phone) => (
-    <li
-      key={phone.name}
-      className={classnames({
-        'product': true,
-        'product--active': phoneName === phone.name,
-      })}
-    >
-      <Card item={phone}/>
-    </li>
-  ))}
-</ul>
+    {phones.map((phone) => (
+      <li
+        key={phone.name}
+        className={classnames({
+          'product': true,
+          'product--active': phoneName === phone.name,
+        })}
+      >
+        <Card item={phone} />
+      </li>
+    ))}
+  </ul>
 );
