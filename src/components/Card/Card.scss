@@ -33,19 +33,7 @@
     margin-top: 24px;
     display: flex;
     width: 100%;
-    & a {
-      transition: 0.3s;
-      border-radius: 5px;
-      &:hover {
-        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
-      }
-    }
-
-    & a .active {
-      @extend %text-body;
-      color: $text-primary;
-      height: 42px;
-    }
+    cursor: pointer;
   }
 
   &__price {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './PhoneCatalog.scss';
 import { IProduct } from '../../interfase/interfase';
-import { useParams, Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { Sort } from '../../components/Sort/Sort';
 import { ItemOnPage } from '../../components/ItemOnPage/ItemOnPage';
@@ -12,9 +12,7 @@ type Props = {
 };
 
 export const PhoneCatalog: React.FC<Props> = ({ phones }) => {
-  const history = useHistory();
   const location = useLocation();
-  const { phoneName } = useParams();
 
   const searchParams = new URLSearchParams(location.search);
   const query: string = searchParams.get('query') || '';
@@ -52,10 +50,6 @@ export const PhoneCatalog: React.FC<Props> = ({ phones }) => {
     );
   }
 
-  if (phoneName && !phones.some(p => p.name === phoneName)) {
-    history.push({ pathname: '/phones' });
-  }
-
   return (
     <div className="phones-page">
       {query
@@ -77,7 +71,7 @@ export const PhoneCatalog: React.FC<Props> = ({ phones }) => {
             <ItemOnPage countItems={phones.length} />
           </section>
         </>}
-      <ProductList search={query} phoneName={phoneName} phones={visiblePhones} />
+      <ProductList search={query} phones={visiblePhones} />
       {query
         ? ""
         : <Pagination pageCount={pageCount} />}

@@ -2,7 +2,7 @@ import React from 'react';
 import './TabletsPage.scss';
 
 import { IProduct } from '../../interfase/interfase';
-import { useParams, Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { Sort } from '../../components/Sort/Sort';
 import { ItemOnPage } from '../../components/ItemOnPage/ItemOnPage';
@@ -13,9 +13,7 @@ type Props = {
 };
 
 export const TabletsPage: React.FC<Props> = ({ tablets }) => {
-  const history = useHistory();
   const location = useLocation();
-  const { tabletName } = useParams();
   const searchParams = new URLSearchParams(location.search);
   const query: string = searchParams.get('query') || '';
   const sort: string = searchParams.get('sort') || '';
@@ -44,10 +42,6 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
     return <p className="loading">Loading...</p>;
   }
 
-  if (tabletName && !tablets.some(p => p.name === tabletName)) {
-    history.push({ pathname: '/tablets' });
-  }
-
   return (
     <div className="phones-page">
       {query
@@ -69,7 +63,7 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
             <ItemOnPage countItems={tablets.length} />
           </section>
         </>}
-      <ProductList search={query} phoneName={tabletName} phones={visibleTablets} />
+      <ProductList search={query} phones={visibleTablets} />
       {query
         ? ""
         : <Pagination pageCount={pageCount} />}

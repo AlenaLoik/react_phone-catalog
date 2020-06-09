@@ -12,3 +12,26 @@
 .nav-location__text--back {
   color: $text-secondaty;
 }
+
+.item {
+
+  &__info--wraper {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+  }
+
+  &__info--left {
+    display: flex;
+    width: 100%;
+    margin-right: 64px;
+    flex-direction: column;
+  }
+
+  &__info--right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 512px;
+  }
+}

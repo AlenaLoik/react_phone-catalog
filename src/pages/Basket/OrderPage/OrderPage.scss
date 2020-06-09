@@ -1,0 +1,11 @@
+@import "../../../units";
+
+.order {
+  @extend %flex-centered;
+  flex-direction: column;
+  margin: 80px 0;
+
+  &__link-button {
+    margin: 40px 0;
+  }
+}

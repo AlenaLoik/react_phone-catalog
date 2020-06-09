@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
 import './Favorites.scss';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { MyContext } from '../../App';
 
 export const Favorites = () => {
   const { favorites } = useContext(MyContext);
   const location = useLocation();
-  const { phoneName } = useParams();
 
   const searchParams = new URLSearchParams(location.search);
   const query: string = searchParams.get('query') || '';
@@ -25,7 +24,7 @@ export const Favorites = () => {
       </section>
       <h1 className="phones-page__title">Favourites</h1>
       <p className="phones-page__counter">{favorites.length} models</p>
-      <ProductList search={query} phoneName={phoneName} phones={favorites} />
+      <ProductList search={query} phones={favorites} />
     </>
   );
 }

@@ -11,7 +11,7 @@ export const BasketList = () => {
     setBasketView(basket)
   }, [])
 
-  const remuveAll = (id: number) => {
+  const remuveAll = (id: string) => {
     setBasketView([...basketView].filter(product => product.id !== id))
     setBasket([...basket].filter(product => product.id !== id));
   }

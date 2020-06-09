@@ -1,56 +1,38 @@
 export interface IProductDetails {
   additionalFeatures: string;
   android: {
-      os: string;
-      ui: string;
-  },
-  availability: [];
-  battery: {
-      standbyTime: string;
-      talkTime: string;
-      type: string;
-  },
+    os: string;
+    ui: string;
+  };
+  availability: string[];
+  battery: Object;
   camera: {
-      features: [];
-      primary: string;
-  },
+    primary: string;
+  };
   connectivity: {
-      bluetooth: string;
-      cell: string;
-      gps: boolean;
-      infrared: boolean;
-      wifi: string;
-  },
+    cell: string;
+  };
   description: string;
   display: {
-      screenResolution: string;
-      screenSize: string;
-      touchScreen: boolean;
-  },
+    screenResolution: string;
+    screenSize: string;
+  };
   hardware: {
-      accelerometer: boolean;
-      audioJack: string;
-      cpu: string;
-      fmRadio: boolean;
-      physicalKeyboard: boolean;
-      usb: string;
-  },
+    cpu: string;
+  };
   id: string;
-  images: [];
+  images: string[];
   name: string;
-  sizeAndWeight: {
-      dimensions: [];
-      weight: string;
-  },
+  sizeAndWeight: Object;
   storage: {
-      flash: string;
-      ram: string;
-  }
+    flash: string;
+    ram: string;
+  };
 }
 
 export interface IProduct {
   age: number;
-  id: number;
+  id: string;
   type: string;
   imageUrl: string;
   name: string;

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './Card.scss';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IProduct } from '../../interfase/interfase';
 import { MyContext } from '../../App';
 
@@ -13,9 +13,6 @@ export const Card: React.FC<Props> = ({ item }) => {
   const { basket, setBasket, favorites, setFavorites } = useContext(MyContext);
   const [isFavorites, setIsFavorites] = useState(favorites.filter(product => product.id === item.id).length > 0);
   const [isItemOnBascket, setIsItemOnBascket] = useState(basket.filter(product => product.id === item.id).length > 0);
-  const history = useHistory();
-  const location = useLocation();
-
 
   useEffect(() => {
     setIsFavorites(favorites.filter(product => product.id === item.id).length > 0)
@@ -41,10 +38,20 @@ export const Card: React.FC<Props> = ({ item }) => {
     }
   }
 
-  const searchParams = new URLSearchParams(location.search);
-
   const priceWithDiscount = `$${price - (price * (discount / 100))}`;
   const price$ = `$${price}`;
+
+  let url = '';
+  switch (item.type) {
+    case 'phone':
+      url = '/phones/';
+      break;
+    case 'tablet':
+      url = '/tablets/';
+      break;
+    default:
+      url = '/accessories/'
+  }
 
   return (
     <div className="item">
@@ -52,18 +59,12 @@ export const Card: React.FC<Props> = ({ item }) => {
         <img className="item__img" src={imageUrl} alt={name} />
       </div>
       <div className="item__title">
-        <NavLink
-          to={`/products/${id}`}
+        <Link
           className="item__title__link"
-          onClick={(event) => {
-            const target = event.target as HTMLTextAreaElement;
-            searchParams.set('itemId', target.value)
-            history.push({
-              search: searchParams.toString()
-            });
-          }}>
+          to={`${url}${id}`}
+          >
           {name}
-        </NavLink>
+        </Link>
       </div>
       <span className="item__price">
         <p className="item__price--discount">{priceWithDiscount}</p>
@@ -76,12 +77,12 @@ export const Card: React.FC<Props> = ({ item }) => {
           <p className="item__description__screen--value">{screen}</p>
         </span>
         <span className="description__capacity">
-          <p className="description__screen--title">Capacity</p>
-          <p className="description__screen--value">{capacity}</p>
+          <p className="description__capacity--title">Capacity</p>
+          <p className="description__capacity--value">{capacity}</p>
         </span>
         <span className="description__ram">
-          <p className="description__screen--title">ram</p>
-          <p className="description__screen--value">{ram}</p>
+          <p className="description__ram--title">RAM</p>
+          <p className="description__ram--value">{ram}</p>
         </span>
       </div>
       <div className="item__button">

@@ -1,0 +1,14 @@
+@import "../../../units";
+
+.tech-specs {
+  &__title {
+    padding-bottom: 16px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid $elements;
+  }
+  & .description__wrapper {
+    padding: 3px 0;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
