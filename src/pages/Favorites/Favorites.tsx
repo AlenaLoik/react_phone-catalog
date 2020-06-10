@@ -23,8 +23,12 @@ export const Favorites = () => {
         <p className="nav-location__text">Favourites</p>
       </section>
       <h1 className="phones-page__title">Favourites</h1>
-      <p className="phones-page__counter">{favorites.length} models</p>
+      <p className="phones-page__counter">
+        {favorites.length}
+        {' '}
+        models
+      </p>
       <ProductList search={query} phones={favorites} />
     </>
   );
-}
+};

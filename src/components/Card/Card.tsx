@@ -9,18 +9,22 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ item }) => {
-  const { price, ram, imageUrl, discount, name, screen, capacity, id } = item;
-  const { basket, setBasket, favorites, setFavorites } = useContext(MyContext);
+  const {
+    price, ram, imageUrl, discount, name, screen, capacity, id,
+  } = item;
+  const {
+    basket, setBasket, favorites, setFavorites,
+  } = useContext(MyContext);
   const [isFavorites, setIsFavorites] = useState(favorites.filter(product => product.id === item.id).length > 0);
   const [isItemOnBascket, setIsItemOnBascket] = useState(basket.filter(product => product.id === item.id).length > 0);
 
   useEffect(() => {
-    setIsFavorites(favorites.filter(product => product.id === item.id).length > 0)
-  }, [favorites])
+    setIsFavorites(favorites.filter(product => product.id === item.id).length > 0);
+  }, [favorites]);
 
   useEffect(() => {
     setIsItemOnBascket(basket.filter(product => product.id === item.id).length > 0);
-  }, [basket])
+  }, [basket]);
 
   const addToFavorites = () => {
     if (!isFavorites) {
@@ -28,7 +32,7 @@ export const Card: React.FC<Props> = ({ item }) => {
     } else {
       setFavorites([...favorites].filter(product => product.id !== item.id));
     }
-  }
+  };
 
   const addToBasket = () => {
     if (!isItemOnBascket) {
@@ -36,12 +40,13 @@ export const Card: React.FC<Props> = ({ item }) => {
     } else {
       setBasket([...basket].filter(product => product.id !== item.id));
     }
-  }
+  };
 
   const priceWithDiscount = `$${price - (price * (discount / 100))}`;
   const price$ = `$${price}`;
 
   let url = '';
+
   switch (item.type) {
     case 'phone':
       url = '/phones/';
@@ -50,7 +55,7 @@ export const Card: React.FC<Props> = ({ item }) => {
       url = '/tablets/';
       break;
     default:
-      url = '/accessories/'
+      url = '/accessories/';
   }
 
   return (
@@ -62,14 +67,16 @@ export const Card: React.FC<Props> = ({ item }) => {
         <Link
           className="item__title__link"
           to={`${url}${id}`}
-          >
+        >
           {name}
         </Link>
       </div>
       <span className="item__price">
         <p className="item__price--discount">{priceWithDiscount}</p>
-        <p className="item__price--value">{(price$ === priceWithDiscount)
-          ? '' : price$}</p>
+        <p className="item__price--value">
+          {(price$ === priceWithDiscount)
+            ? '' : price$}
+        </p>
       </span>
       <div className="description item__description">
         <span className="description__screen">
@@ -87,20 +94,21 @@ export const Card: React.FC<Props> = ({ item }) => {
       </div>
       <div className="item__button">
         <input
-          className={isItemOnBascket ? "item__button--add active" : "item__button--add"}
+          className={isItemOnBascket ? 'item__button--add active' : 'item__button--add'}
           type="button"
-          value={isItemOnBascket ? "Remuve from cart" : "Add to cart"}
+          value={isItemOnBascket ? 'Remuve from cart' : 'Add to cart'}
           onClick={addToBasket}
         />
         <button
           className="item__button--favorites"
           type="button"
-          onClick={addToFavorites} >
+          onClick={addToFavorites}
+        >
           {isFavorites
             ? <img className="item__button--svg" src="./img/svg/heart.svg" alt="heart" />
             : <img className="item__button--active" src="./img/svg/heart-1.svg" alt="heart" />}
         </button>
       </div>
     </div>
-  )
-}
+  );
+};

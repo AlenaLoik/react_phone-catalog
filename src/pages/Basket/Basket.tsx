@@ -17,24 +17,39 @@ export const Basket = () => {
           <p className="nav-location__text--back">Back</p>
         </Link>
         <h1 className="basket__title">Cart</h1>
-        {(basket.length < 1)
-        ? <h2>Oops... Your Cart still empty..</h2>
-      : ""}
       </section>
-      <section className="basket__main">
+      {(basket.length < 1)
+        ? <h2>Oops... Your Cart still empty..</h2>
+        : (
+          <section className="basket__main">
             <ul className="basket__items">
               <BasketList />
             </ul>
             <div className="basket__total-price total-price">
-              <p className="total-price__value">${totalPrice}</p>
-              <p className="total-price__count">Total for {basket.length} items</p>
+              <p className="total-price__value">
+                $
+                {totalPrice}
+              </p>
+              <p className="total-price__count">
+                Total for
+                {basket.length}
+                {' '}
+                items
+              </p>
               <Link to="/order">
-              <button onClick={() => {
-                setBasket([])
-              }} className="total-price__button">Checkout</button>
-            </Link>
+                <button
+                  onClick={() => {
+                    setBasket([]);
+                  }}
+                  className="total-price__button"
+                >
+                  Checkout
+                </button>
+              </Link>
             </div>
-      </section>
+          </section>
+        )}
+
     </div>
   );
-}
+};

@@ -39,3 +39,20 @@
     }
   }
 }
+
+@media screen and (max-width: 719px) {
+  .category__img {
+    height: 200px;
+
+  }
+}
+
+@media screen and (max-width: 608px) {
+  .categorys__container {
+    flex-direction: column;
+  }
+
+  .category:nth-child(2) {
+    margin: 24px 0;
+  }
+}

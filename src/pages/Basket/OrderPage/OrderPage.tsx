@@ -12,15 +12,15 @@ export const OrderPage = () => {
         </Link>
       </section>
       <section className="order">
-      <h1> Thank you for your order! </h1>
-      <Link to="/phones" className="order__link-button">
-        <input
-          className="item__button--add"
-          type="button"
-          value="Continue shopping..."
-        />
-      </Link>
+        <h1> Thank you for your order! </h1>
+        <Link to="/phones" className="order__link-button">
+          <input
+            className="item__button--add"
+            type="button"
+            value="Continue shopping..."
+          />
+        </Link>
       </section>
     </div>
   );
-}
+};

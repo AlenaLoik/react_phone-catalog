@@ -9,28 +9,32 @@ type Props = {
   item: IProduct;
   resolution: string;
   processor: string;
-}
+};
 
 export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) => {
   const [selectCapacity, setIsSelectCapacity] = useState('64 GB');
   const [numColor, setNumColor] = useState('1');
-  const { basket, setBasket, favorites, setFavorites } = useContext(MyContext);
+  const {
+    basket, setBasket, favorites, setFavorites,
+  } = useContext(MyContext);
   const [isFavorites, setIsFavorites] = useState(favorites.filter(product => product.id === item.id).length > 0);
   const [isItemOnBascket, setIsItemOnBascket] = useState(basket.filter(product => product.id === item.id).length > 0);
-  const { price, discount, ram, screen } = item;
+  const {
+    price, discount, ram, screen,
+  } = item;
   const priceWithDiscount = `$${price - (price * (discount / 100))}`;
   const price$ = `$${price}`;
   const colorCount = 4;
 
-  console.log(numColor)
+  console.log(numColor);
 
   useEffect(() => {
-    setIsFavorites(favorites.filter(product => product.id === item.id).length > 0)
-  }, [favorites])
+    setIsFavorites(favorites.filter(product => product.id === item.id).length > 0);
+  }, [favorites]);
 
   useEffect(() => {
     setIsItemOnBascket(basket.filter(product => product.id === item.id).length > 0);
-  }, [basket])
+  }, [basket]);
 
   const addToFavorites = () => {
     if (!isFavorites) {
@@ -38,17 +42,19 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
     } else {
       setFavorites([...favorites].filter(product => product.id !== item.id));
     }
-  }
+  };
 
   const handleChangeCapacity = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLTextAreaElement;
-    setIsSelectCapacity(target.value)
-  }
+
+    setIsSelectCapacity(target.value);
+  };
 
   const handleChangeColor = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLTextAreaElement;
-    setNumColor(target.value)
-  }
+
+    setNumColor(target.value);
+  };
 
   const addToBasket = () => {
     if (!isItemOnBascket) {
@@ -56,7 +62,7 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
     } else {
       setBasket([...basket].filter(product => product.id !== item.id));
     }
-  }
+  };
 
   return (
     <>
@@ -68,44 +74,51 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
         <span className="item__colors">
           {Array(colorCount).fill('button').map((item, index) => (
             <div className={(String(index + 1) === numColor)
-              ? "item__color selected"
-              : "item__color"}>
-              <input onClick={handleChangeColor}
+              ? 'item__color selected'
+              : 'item__color'}
+            >
+              <input
+                onClick={handleChangeColor}
                 type={item}
-                value={index + 1} />
+                value={index + 1}
+              />
             </div>
           ))}
         </span>
         <span className="item__capacity">
-          <p >Select capacity</p>
+          <p>Select capacity</p>
           <div className="buttons__wrap">
             {capacitys.map(capacity => (
               <input
                 type="button"
                 onClick={handleChangeCapacity}
                 className={(selectCapacity === capacity.gb)
-                  ? "pagination__button pagination__button--page active"
-                  : "pagination__button pagination__button--page"}
-                value={capacity.gb} />
+                  ? 'pagination__button pagination__button--page active'
+                  : 'pagination__button pagination__button--page'}
+                value={capacity.gb}
+              />
             ))}
           </div>
         </span>
         <span className="item__price">
           <h1 className="item__price--discount">{priceWithDiscount}</h1>
-          <p className="item__price--value">{(price$ === priceWithDiscount)
-            ? '' : price$}</p>
+          <p className="item__price--value">
+            {(price$ === priceWithDiscount)
+              ? '' : price$}
+          </p>
         </span>
         <div className="item__button">
           <input
-            className={isItemOnBascket ? "item__button--add active" : "item__button--add"}
+            className={isItemOnBascket ? 'item__button--add active' : 'item__button--add'}
             type="button"
-            value={isItemOnBascket ? "Remuve from cart" : "Add to cart"}
+            value={isItemOnBascket ? 'Remuve from cart' : 'Add to cart'}
             onClick={addToBasket}
           />
           <button
             className="item__button--favorites"
             type="button"
-            onClick={addToFavorites} >
+            onClick={addToFavorites}
+          >
             {isFavorites
               ? <img className="item__button--svg" src="./img/svg/heart.svg" alt="heart" />
               : <img className="item__button--active" src="./img/svg/heart-1.svg" alt="heart" />}
@@ -132,5 +145,5 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
       </section>
 
     </>
-  )
-}
+  );
+};

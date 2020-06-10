@@ -6,14 +6,14 @@ export const Search = () => {
   const history = useHistory();
   const location = useLocation();
 
-  const searchParams = new URLSearchParams(location.search)
+  const searchParams = new URLSearchParams(location.search);
   const query: string = searchParams.get('query') || '';
 
   const clearSearch = () => {
     history.push({
-      search: `?query=`
+      search: '?query=',
     });
-  }
+  };
 
   return (
     <div className="search">
@@ -24,15 +24,17 @@ export const Search = () => {
         value={query}
         onChange={(event) => {
           history.push({
-            search: `?query=${event.target.value}`
+            search: `?query=${event.target.value}`,
           });
         }}
       />
       {query
         ? <button onClick={clearSearch} className="search__img search__img--remuve">+</button>
-        : <div className="search__img">
-          <img src="./img/svg/search.svg" alt="search" />
-        </div>}
+        : (
+          <div className="search__img">
+            <img src="./img/svg/search.svg" alt="search" />
+          </div>
+        )}
     </div>
   );
-}
+};

@@ -37,9 +37,14 @@
   }
 
   &__controler {
-    display: flex;
-    align-items: center;
+    @extend %flex-centered;
+    width: min-content;
     justify-content: flex-end;
+
+    &__buttons {
+      @extend %flex-centered;
+      justify-content: flex-end;
+    }
 
     &--price {
       box-sizing: border-box;
@@ -85,5 +90,45 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .basket-items {
+    &__controler {
+      flex-direction: column-reverse;
+      width: min-content;
+      height: 100px;
+
+      &__buttons {
+        justify-content: center;
+      }
+
+      &--price {
+        margin: 10px 0 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .basket-items {
+    flex-direction: column;
+    padding: 24px;
+    height: 150px;
+    margin-right: 0;
+
+    &__info {
+      flex-direction: row;
+      align-items: flex-start;
+      width: 100%;
+      text-overflow: ellipsis;
+    }
+
+    &__name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
 }

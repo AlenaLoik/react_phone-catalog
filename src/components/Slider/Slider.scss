@@ -9,8 +9,7 @@
       position: relative;
       overflow: hidden;
       width: 1040px;
-      margin: 0;
-
+      margin: 0 16px;
     }
 
     &__images {
@@ -48,6 +47,19 @@
 
       & .active {
         background-color: $text-primary;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 719px) {
+  .slider {
+    &__main {
+      &__wraper {
+        height: 240px;
+      }
+      & > .pagination__button {
+        height: 240px;
       }
     }
   }

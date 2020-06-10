@@ -4,10 +4,12 @@ import { IProductDetails } from '../../../interfase/interfase';
 
 type Props = {
   itemDetails: IProductDetails;
-}
+};
 
 export const TechSpecs: React.FC<Props> = ({ itemDetails }) => {
-  const { camera, connectivity, android, display, storage, hardware } = itemDetails;
+  const {
+    camera, connectivity, android, display, storage, hardware,
+  } = itemDetails;
 
   return (
     <section className="tech-specs">
@@ -48,4 +50,4 @@ export const TechSpecs: React.FC<Props> = ({ itemDetails }) => {
       </div>
     </section>
   );
-}
+};

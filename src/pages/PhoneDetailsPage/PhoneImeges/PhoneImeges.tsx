@@ -3,7 +3,7 @@ import './PhoneImeges.scss';
 
 type Props = {
   images: string[];
-}
+};
 
 export const PhoneImeges: React.FC<Props> = ({ images }) => {
   const [imgSelected, setImgSelecnted] = useState(images[0]);
@@ -13,12 +13,13 @@ export const PhoneImeges: React.FC<Props> = ({ images }) => {
       <div className="phone-imeges__container--small">
         {images.map(img => (
           <img
-          className={img === imgSelected
-            ? "phone-imeges__img active"
-            : "phone-imeges__img"}
-          src={img}
-          onClick={() => setImgSelecnted(img)}
-          alt="phone-img-small" />
+            className={img === imgSelected
+              ? 'phone-imeges__img active'
+              : 'phone-imeges__img'}
+            src={img}
+            onClick={() => setImgSelecnted(img)}
+            alt="phone-img-small"
+          />
         ))}
       </div>
       <div className="phone-imeges__container--big">
@@ -26,7 +27,4 @@ export const PhoneImeges: React.FC<Props> = ({ images }) => {
       </div>
     </div>
   );
-}
-
-
-
+};

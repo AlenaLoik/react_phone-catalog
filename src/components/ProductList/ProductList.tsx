@@ -5,7 +5,7 @@ import { Card } from '../Card/Card';
 
 type Props = {
   phones: IProduct[];
-  search: string
+  search: string;
 };
 
 export const ProductList: React.FC<Props> = ({ search, phones }) => (

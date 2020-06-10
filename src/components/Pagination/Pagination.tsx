@@ -16,25 +16,26 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
 
   const handleChangePage = (event: React.MouseEvent<HTMLElement>) => {
     const target = event.target as HTMLTextAreaElement;
-    searchParams.set('page', target.value)
+
+    searchParams.set('page', target.value);
     history.push({
-      search: searchParams.toString()
+      search: searchParams.toString(),
     });
-  }
+  };
 
   const handleChangePageNext = () => {
-    searchParams.set('page', `${page + 1}`)
+    searchParams.set('page', `${page + 1}`);
     history.push({
-      search: searchParams.toString()
+      search: searchParams.toString(),
     });
-  }
+  };
 
   const handleChangePagePrew = () => {
-    searchParams.set('page', `${page - 1}`)
+    searchParams.set('page', `${page - 1}`);
     history.push({
-      search: searchParams.toString()
+      search: searchParams.toString(),
     });
-  }
+  };
 
   return (
     <section className="pagination">
@@ -42,28 +43,30 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
         onClick={handleChangePagePrew}
         disabled={page < 2}
         className={(page < 2)
-          ? "pagination__button pagination__button--left disabled"
-          : "pagination__button pagination__button--left"}
+          ? 'pagination__button pagination__button--left disabled'
+          : 'pagination__button pagination__button--left'}
       >
         <img className="pagination__button--img" src="./img/svg/arrow-next.svg" alt="next" />
       </button>
       {Array(pageCount).fill('button').map((item, index) => (
-        <input onClick={handleChangePage}
+        <input
+          onClick={handleChangePage}
           type={item}
           className={((index + 1) === page)
-            ? "pagination__button pagination__button--page active"
-            : "pagination__button pagination__button--page"}
-          value={index + 1} />
+            ? 'pagination__button pagination__button--page active'
+            : 'pagination__button pagination__button--page'}
+          value={index + 1}
+        />
       ))}
       <button
         disabled={page > (pageCount - 1)}
         onClick={handleChangePageNext}
         className={(page > (pageCount - 1))
-          ? "pagination__button pagination__button--right disabled"
-          : "pagination__button pagination__button--right"}
+          ? 'pagination__button pagination__button--right disabled'
+          : 'pagination__button pagination__button--right'}
       >
         <img className="pagination__button--img" src="./img/svg/arrow-next.svg" alt="next" />
       </button>
     </section>
   );
-}
+};

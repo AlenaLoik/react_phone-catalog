@@ -5,7 +5,7 @@ export interface IProductDetails {
     ui: string;
   };
   availability: string[];
-  battery: Object;
+  battery: Record<string, any>;
   camera: {
     primary: string;
   };
@@ -23,7 +23,7 @@ export interface IProductDetails {
   id: string;
   images: string[];
   name: string;
-  sizeAndWeight: Object;
+  sizeAndWeight: Record<string, any>;
   storage: {
     flash: string;
     ram: string;
@@ -37,7 +37,7 @@ export interface IProduct {
   imageUrl: string;
   name: string;
   snippet: string;
-  price: number,
+  price: number;
   discount: number;
   screen: string;
   capacity: string;

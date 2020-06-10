@@ -8,18 +8,19 @@ export const BasketList = () => {
   const { basket, setBasket } = useContext(MyContext);
 
   useEffect(() => {
-    setBasketView(basket)
-  }, [])
+    setBasketView(basket);
+  }, []);
 
   const remuveAll = (id: string) => {
-    setBasketView([...basketView].filter(product => product.id !== id))
+    setBasketView([...basketView].filter(product => product.id !== id));
     setBasket([...basket].filter(product => product.id !== id));
-  }
+  };
 
   const remuveOneItem = (item: IProduct) => {
     const indexItem = [...basket].lastIndexOf(item);
+
     setBasket([...basket].slice(0, (indexItem)).concat([...basket].slice(indexItem + 1)));
-  }
+  };
 
   return (
     <>
@@ -28,27 +29,34 @@ export const BasketList = () => {
           <div className="basket-items__info">
             <button
               onClick={() => remuveAll(item.id)}
-              className="basket-items__remuve">
+              className="basket-items__remuve"
+            >
               +
-              </button>
+            </button>
             <img className="basket-items__img" src={item.imageUrl} alt="phone" />
             <p className="basket-items__name">{item.name}</p>
           </div>
           <section className="basket-items__controler">
-            <button
-              onClick={() => remuveOneItem(item)}
-              disabled={basket.filter(prod => prod.id === item.id).length < 2}
-              className="basket-items__controler--button">
-              -
+            <section className="basket-items__controler__buttons">
+              <button
+                onClick={() => remuveOneItem(item)}
+                disabled={basket.filter(prod => prod.id === item.id).length < 2}
+                className="basket-items__controler--button"
+              >
+                -
               </button>
-            <p className="basket-items__controler--count">
-              {basket.filter(prod => prod.id === item.id).length}
-            </p>
-            <button
-              onClick={() => { setBasket([...basket, item]) }}
-              className="basket-items__controler--button">
-              +
-                </button>
+              <p className="basket-items__controler--count">
+                {basket.filter(prod => prod.id === item.id).length}
+              </p>
+              <button
+                onClick={() => {
+                  setBasket([...basket, item]);
+                }}
+                className="basket-items__controler--button"
+              >
+                +
+              </button>
+            </section>
             <p className="basket-items__controler--price">
               {`$${item.price - (item.price * (item.discount / 100))}`}
             </p>
@@ -57,4 +65,4 @@ export const BasketList = () => {
       ))}
     </>
   );
-}
+};

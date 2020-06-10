@@ -1,35 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import './PhoneDetailsPage.scss';
+import { Link } from 'react-router-dom';
 import { SliderWithItems } from '../../components/SliderWithItems/SliderWithItems';
 import { SelectOptions } from './SelectOptions/SelectOptions';
 import { TechSpecs } from './TechSpecs/TechSpecs';
 import { About } from './About/About';
 import { PhoneImeges } from './PhoneImeges/PhoneImeges';
 import { IProduct, IProductDetails } from '../../interfase/interfase';
-import { Link } from 'react-router-dom';
 import { getDetails } from '../../helpers/api';
 
 type Props = {
   items: IProduct[];
   item: IProduct;
-}
+};
 
 export const PhoneDetailsPage: React.FC<Props> = ({ items, item }) => {
   const likeItems = items.sort((a, b) => b.price - a.price);
   const [itemDetails, setItemDetails] = useState<IProductDetails>({} as IProductDetails);
-  const { display, android, description, images } = itemDetails;
+  const {
+    display, android, description, images,
+  } = itemDetails;
+
   useEffect(() => {
-    getDetails(item.id).then(setItemDetails)
+    getDetails(item.id).then(setItemDetails);
   }, []);
 
   if (JSON.stringify(itemDetails) === JSON.stringify({})) {
     return (
-      <><div className="lds-spinner">
-        <div></div><div></div><div></div>
-        <div></div><div></div><div></div>
-        <div></div><div></div><div></div>
-        <div></div><div></div><div></div>
-      </div><h1>Loading...</h1>
+      <>
+        <div className="lds-spinner">
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+        <h1>Loading...</h1>
       </>
     );
   }
@@ -75,7 +88,7 @@ export const PhoneDetailsPage: React.FC<Props> = ({ items, item }) => {
           <TechSpecs itemDetails={itemDetails} />
         </section>
       </div>
-      <SliderWithItems title={"You may also like"} itemsForSlider={likeItems} />
+      <SliderWithItems title="You may also like" itemsForSlider={likeItems} />
     </>
   );
-}
+};
