@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Slider.scss';
 
 const imagesArr = [
@@ -15,10 +15,14 @@ export const Slider = () => {
   const itemWidth = 1040;
   const maxWhidth = -(itemWidth * (imagesArr.length - 1));
 
+  useEffect(() => {
+    const interval = setInterval(
+      () => handleChangePageNext(),
+      3000,
+    );
 
-  setTimeout(() => {
-    handleChangePageNext();
-  }, 3000);
+    return () => clearInterval(interval);
+  }, [left]);
 
   const handleChangePagePrew = () => {
     if (active === 0) {
@@ -43,6 +47,12 @@ export const Slider = () => {
     setActive(active + 1);
     setLeft(left - itemWidth);
   };
+
+  const handleChangeActiveDot = (e: any) => {
+    const selectedSlide = Number(e.target.id)
+    setLeft(left + (itemWidth * (active - selectedSlide)));
+    setActive(selectedSlide)
+  }
 
   return (
     <div className="slider">
@@ -69,16 +79,18 @@ export const Slider = () => {
           <img className="pagination__button--img" src="./img/svg/arrow-next.svg" alt="next" />
         </button>
       </section>
-      <section className="slider__naw">
+      <section className="slider__nav">
         {Array(imagesArr.length).fill('').map((item, index) => (
-          <div
+          <a
+            onClick={handleChangeActiveDot}
             key={index}
+            id={index.toString()}
             className={(index === active)
-              ? 'slider__naw--button active'
-              : 'slider__naw--button'}
+              ? 'slider__nav--button active'
+              : 'slider__nav--button'}
           >
             {item}
-          </div>
+          </a>
         ))}
       </section>
     </div>

@@ -6,7 +6,8 @@ export const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
   const threshold = 200;
 
-  const scrollTop = () => {
+  const scrollTop = (e: any) => {
+    e.preventDefault();
     let heightOfPage = window.pageYOffset;
     const intervalScrolling = setInterval(() => {
       window.scrollTo(0, heightOfPage);
