@@ -1,5 +1,12 @@
 @import "../../../units";
 
+.option {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 64px;
+}
+
 .item {
   &__header {
     display: flex;
@@ -97,4 +104,15 @@
 
 .selected {
   border: 1px solid $text-primary;
+}
+
+@media screen and (max-width: 1049px) {
+  .item {
+    &__details {
+      max-width: 1000px;
+    }
+  }
+  .option {
+    padding-left: 0;
+  }
 }

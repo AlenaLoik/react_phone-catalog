@@ -65,7 +65,7 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
   };
 
   return (
-    <>
+    <section className="option">
       <span className="item__header">
         <p>Available colors</p>
         <p>ID: 802390</p>
@@ -143,7 +143,6 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
           </span>
         </div>
       </section>
-
-    </>
+    </section>
   );
 };

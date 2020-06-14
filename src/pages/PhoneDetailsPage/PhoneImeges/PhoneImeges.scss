@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     max-height: 464px;
-    overflow: hidden;
+    overflow: scroll;
   }
 
   &__img {
@@ -36,5 +36,25 @@
     display: flex;
     min-width: 464px;
     min-height: 464px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .phone-imeges {
+    height: min-content;
+    flex-direction: column-reverse;
+
+    &__container--small {
+      flex-direction: row;
+      overflow: scroll;
+    }
+    &__container--big {
+      display: flex;
+    }
+    &__imege--big {
+      margin-bottom: 24px;
+      min-width: 250px;
+      min-height: 250px;
+    }
   }
 }

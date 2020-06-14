@@ -9,6 +9,14 @@
   }
 }
 
+.lds-spinner {
+  margin-bottom: 80px;
+}
+
+.basket__header > .nav-location {
+  padding-top: 0;
+}
+
 .nav-location__text--back {
   color: $text-secondaty;
 }
@@ -17,21 +25,28 @@
 
   &__info--wraper {
     display: flex;
-    justify-content: space-between;
     margin: 40px 0;
-  }
-
-  &__info--left {
-    display: flex;
-    width: 100%;
-    margin-right: 64px;
     flex-direction: column;
   }
 
-  &__info--right {
+  &__info--top {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    max-width: 512px;
+  }
+
+  &__info--buttom {
+    display: flex;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1049px) {
+  .item {
+    &__info--top {
+      flex-direction: column;
+    }
+    &__info--buttom {
+      flex-direction: column;
+    }
   }
 }

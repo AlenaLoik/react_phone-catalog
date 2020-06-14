@@ -15,7 +15,7 @@ export const Favorites = () => {
     <>
       <section className="nav-location">
         <Link to="/" className="nav-location__svg--home">
-          <img src="./img/svg/HOME.svg" alt="home" />
+          <img src="./img/svg/Home.svg" alt="HOME" />
         </Link>
         <div className="nav-location__svg--arrow">
           <img src="./img/svg/arrow-next.svg" alt="home" />

@@ -18,7 +18,7 @@ export const PhoneDetailsPage: React.FC<Props> = ({ items, item }) => {
   const likeItems = items.sort((a, b) => b.price - a.price);
   const [itemDetails, setItemDetails] = useState<IProductDetails>({} as IProductDetails);
   const {
-    display, android, description, images,
+    display, android, description, images, additionalFeatures
   } = itemDetails;
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const PhoneDetailsPage: React.FC<Props> = ({ items, item }) => {
     <>
       <section className="nav-location">
         <Link to="/" className="nav-location__svg--home">
-          <img src="./img/svg/HOME.svg" alt="HOME" />
+          <img src="./img/svg/Home.svg" alt="HOME" />
         </Link>
         <div className="nav-location__svg--arrow">
           <img src="./img/svg/arrow-next.svg" alt="next" />
@@ -65,26 +65,26 @@ export const PhoneDetailsPage: React.FC<Props> = ({ items, item }) => {
         </div>
         <p className="nav-location__text">{item.name}</p>
       </section>
-      <section className="nav-location">
-        <div className="nav-location__svg--arrow nav-location__svg--arrow--back">
-          <img src="./img/svg/arrow-next.svg" alt="next" />
-        </div>
-        <Link to="/phones">
+      <section className="basket__header">
+        <Link to="/phones" className="nav-location phone-details--location">
+          <img className="nav-location--img" src="./img/svg/arrow-next.svg" alt="next" />
           <p className="nav-location__text--back">Back</p>
         </Link>
       </section>
       <h1 className="item__title phone-details">{item.name}</h1>
       <div className="item__info--wraper">
-        <section className="item__info--left">
+        <section className="item__info--top">
           <PhoneImeges images={images} />
-          <About description={description} />
-        </section>
-        <section className="item__info--right">
           <SelectOptions
             processor={android.os}
             resolution={display.screenResolution}
             item={item}
           />
+        </section>
+        <section className="item__info--buttom">
+          <About
+            description={description}
+            features={additionalFeatures} />
           <TechSpecs itemDetails={itemDetails} />
         </section>
       </div>

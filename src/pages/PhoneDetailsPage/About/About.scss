@@ -1,9 +1,20 @@
 @import "../../../units";
 
 .about {
+  max-width: 588px;
+  margin-right: 64px;
+
   &__title {
     padding-bottom: 16px;
     margin-bottom: 25px;
     border-bottom: 1px solid $elements;
+  }
+}
+
+@media screen and (max-width: 1049px) {
+  .about {
+    max-width: 1000px;
+    margin-right: 0;
+    margin-bottom: 40px;
   }
 }
