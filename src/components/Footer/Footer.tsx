@@ -49,7 +49,7 @@ export const Footer = () => {
           </a>
         </li>
       </ul>
-      <a href="#" className="scrollTop" onClick={scrollTop}>
+      <a href="#" className={isVisible ? "scrollTop" : "scrollTop hidden"} onClick={scrollTop}>
         <p className="scrollTop__text">Back to top</p>
         <img className={isVisible ? 'scrollTop__img' : 'scrollTop__img hidden'} src="./img/svg/arrow-next.svg" alt="scrollTop" />
       </a>

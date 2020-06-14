@@ -4,8 +4,7 @@
   @extend %flex-centered;
   max-width: 327px;
   padding-left: 24px;
-  border-left: 1 solid $icons;
-  box-shadow: -1px 0 0 #e2e6e9;
+  border-left: 1px solid $elements;
 
   &__input {
     @extend %flex-centered;
@@ -36,4 +35,17 @@ input::placeholder {
   font-size: 14px;
   letter-spacing: 0;
   color: $text-secondaty;
+}
+
+@media screen and (max-width: 460px) {
+  .search {
+    margin-top: 4px;
+    position: absolute;
+    transform: translateY(100%);
+    max-width: 460px;
+    width: calc(100vw - 78px);
+    z-index: 4;
+    border: none;
+    border-bottom: 1px solid $elements;
+  }
 }

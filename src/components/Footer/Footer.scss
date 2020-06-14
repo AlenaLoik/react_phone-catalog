@@ -80,3 +80,22 @@
     right: 24px;
   }
 }
+
+@media screen and (max-width: 579px) {
+  .footer {
+    flex-direction: column;
+    padding-top: 24px;
+    &__item {
+      padding: 0 12px;
+    }
+  }
+  .scrollTop {
+    &__text {
+      display: none;
+    }
+
+    &__img {
+      bottom: 72px;
+    }
+  }
+}

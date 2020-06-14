@@ -18,7 +18,7 @@ export const Search = () => {
   return (
     <div className="search">
       <input
-        placeholder="Search in phones..."
+        placeholder="Search in catalog..."
         className="search__input"
         type="text"
         value={query}

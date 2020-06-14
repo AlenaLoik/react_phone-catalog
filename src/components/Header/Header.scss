@@ -10,6 +10,7 @@
   margin-bottom: 24px;
   height: 64px;
   box-shadow: 0 1px 0 #e2e6e9;
+  // overflow: hidden;
 
   &__top {
     @extend %flex-centered;
@@ -69,25 +70,8 @@
   }
 }
 
-// @media screen and (max-width: 1000px) {
-//   .header {
-//     padding-right: 0;
-//     padding-left: 0;
-
-//     &__top {
-//       padding: 0;
-//       justify-content: end;
-//     }
-
-//     &__logo {
-//       display: none;
-//     }
-
-//     &__action {
-//       transform: translate(50%, 10%);
-//       z-index: 3;
-//       position: absolute;
-//       right: 20vw;
-//     }
-//   }
-// }
+@media screen and (max-width: 919px) {
+  .header__logo {
+    visibility: hidden;
+  }
+}
