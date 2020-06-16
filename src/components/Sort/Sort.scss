@@ -1,22 +1,37 @@
 @import "../../units";
 
-.select-for-sort {
-  display: flex;
-  flex-direction: column;
-  margin-right: 16px;
+.dropdown {
+  margin-right: 61px;
 
-  &__option {
-    border: 1px solid $icons;
-    box-sizing: border-box;
-    width: 128px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__heading {
+    @extend %text-small;
+    margin-bottom: 4px;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 176px;
     height: 40px;
-    display: block;
-    padding: 0.6em 1.4em 0.5em 0.8em;
-    margin: 0;
-    box-shadow: 0 1px 0 1px rgba(0,0,0,0.04);
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
+    box-sizing: border-box;
+  }
+
+  &__header {
+    width: 176px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid $icons;
+    background-color: $white;
+    line-height: 38px;
+    outline: none;
+    margin-top: 0;
+    cursor: pointer;
 
     &:hover {
       border-color: $text-secondaty;
@@ -24,23 +39,62 @@
 
     &:focus {
       border-color: $text-primary;
-
-      & option {
-        color: $text-secondaty;
-      }
     }
   }
 
-  &__svg {
-    transform: rotate(180deg);
+  &__list {
+    width: 100%;
+    margin-top: 4px;
     position: absolute;
-    margin-top: 36px;
-    margin-left: 100px;
-    fill: $icons;
+    border: 1px solid $icons;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    background-color: $white;
+    box-sizing: border-box;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    list-style: none;
+    transition: 0.2s;
+
+    &--is-open {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  &__text {
-    @extend %text-small;
-    padding-bottom: 4px;
+  &__list-item {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-secondaty;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &--active {
+      color: $text-primary;
+    }
+
+    &:hover {
+      background: #fafbfc;
+      color: $text-primary;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url("/img/svg/arrow-next.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.2s;
+
+    &--up {
+      transform: rotate(180deg);
+    }
   }
 }

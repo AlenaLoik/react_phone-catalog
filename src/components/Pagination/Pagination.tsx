@@ -23,15 +23,11 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
     });
   };
 
-  const handleChangePageNext = () => {
-    searchParams.set('page', `${page + 1}`);
-    history.push({
-      search: searchParams.toString(),
-    });
-  };
+  const handleChangePageArrow = (event: React.MouseEvent<HTMLElement>) => {
+   const target = event.target as HTMLTextAreaElement;
+   console.log(page)
 
-  const handleChangePagePrew = () => {
-    searchParams.set('page', `${page - 1}`);
+    searchParams.set('page', `${Number(target.value) + page}`);
     history.push({
       search: searchParams.toString(),
     });
@@ -40,7 +36,8 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
   return (
     <section className="pagination">
       <button
-        onClick={handleChangePagePrew}
+        onClick={handleChangePageArrow}
+        value={-1}
         disabled={page < 2}
         className={(page < 2)
           ? 'pagination__button pagination__button--left disabled'
@@ -60,7 +57,8 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
       ))}
       <button
         disabled={page > (pageCount - 1)}
-        onClick={handleChangePageNext}
+        value={1}
+        onClick={handleChangePageArrow}
         className={(page > (pageCount - 1))
           ? 'pagination__button pagination__button--right disabled'
           : 'pagination__button pagination__button--right'}

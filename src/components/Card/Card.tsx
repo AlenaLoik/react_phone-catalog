@@ -96,7 +96,7 @@ export const Card: React.FC<Props> = ({ item }) => {
         <input
           className={isItemOnBascket ? 'item__button--add active' : 'item__button--add'}
           type="button"
-          value={isItemOnBascket ? 'Remuve from cart' : 'Add to cart'}
+          value={isItemOnBascket ? 'Remove from cart' : 'Add to cart'}
           onClick={addToBasket}
         />
         <button

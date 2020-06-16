@@ -39,7 +39,7 @@ export const Footer = () => {
           </a>
         </li>
         <li className="footer__item">
-          <a href="https://docs.google.com/document/d/1iySEp5jUAeVVIlg449jUn1rV6RPRqLCl/edit" className="footer__link">
+          <a href="https://drive.google.com/file/d/1BuQAs-mWhC-MMw7FhkvU6Lixlr6TQzTM/view?usp=sharing" className="footer__link">
             Contacts
           </a>
         </li>
