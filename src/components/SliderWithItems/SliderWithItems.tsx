@@ -13,7 +13,7 @@ export const SliderWithItems: React.FC<Props> = ({ itemsForSlider, title }) => {
   const itemWidth = 288;
   const maxWidth = -((itemsForSlider.length - 4) * itemWidth);
 
-  const handleChangePagePrew = () => {
+  const handleChangePagePrev = () => {
     if (left >= 0) {
       return;
     }
@@ -35,7 +35,7 @@ export const SliderWithItems: React.FC<Props> = ({ itemsForSlider, title }) => {
         <h1 className="slider-item__title">{title}</h1>
         <div className="slider-item__buttons">
           <button
-            onClick={handleChangePagePrew}
+            onClick={handleChangePagePrev}
             disabled={left === 0}
             className={(left === 0)
               ? 'pagination__button pagination__button--left disabled'

@@ -18,7 +18,7 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
     basket, setBasket, favorites, setFavorites,
   } = useContext(MyContext);
   const [isFavorites, setIsFavorites] = useState(favorites.filter(product => product.id === item.id).length > 0);
-  const [isItemOnBascket, setIsItemOnBascket] = useState(basket.filter(product => product.id === item.id).length > 0);
+  const [isItemOnBasket, setIsItemOnBasket] = useState(basket.filter(product => product.id === item.id).length > 0);
   const {
     price, discount, ram, screen,
   } = item;
@@ -33,7 +33,7 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
   }, [favorites]);
 
   useEffect(() => {
-    setIsItemOnBascket(basket.filter(product => product.id === item.id).length > 0);
+    setIsItemOnBasket(basket.filter(product => product.id === item.id).length > 0);
   }, [basket]);
 
   const addToFavorites = () => {
@@ -57,7 +57,7 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
   };
 
   const addToBasket = () => {
-    if (!isItemOnBascket) {
+    if (!isItemOnBasket) {
       setBasket([...basket, item]);
     } else {
       setBasket([...basket].filter(product => product.id !== item.id));
@@ -109,9 +109,9 @@ export const SelectOptions: React.FC<Props> = ({ item, resolution, processor }) 
         </span>
         <div className="item__button">
           <input
-            className={isItemOnBascket ? 'item__button--add active' : 'item__button--add'}
+            className={isItemOnBasket ? 'item__button--add active' : 'item__button--add'}
             type="button"
-            value={isItemOnBascket ? 'Remuve from cart' : 'Add to cart'}
+            value={isItemOnBasket ? 'Remuve from cart' : 'Add to cart'}
             onClick={addToBasket}
           />
           <button
