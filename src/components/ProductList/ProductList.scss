@@ -1,0 +1,22 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-right: -16px;
+
+  &--active {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+.product {
+  list-style: none;
+}
+
+@media screen and (max-width: 608px) {
+  .products {
+    justify-content: center;
+  }
+}

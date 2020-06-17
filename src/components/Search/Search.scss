@@ -1,0 +1,51 @@
+@import "../../units";
+
+.search {
+  @extend %flex-centered;
+  max-width: 327px;
+  padding-left: 24px;
+  border-left: 1px solid $elements;
+
+  &__input {
+    @extend %flex-centered;
+    outline: none;
+    border: none;
+    cursor: unset;
+  }
+
+  &__img {
+    line-height: 32px;
+    width: 32px;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 26px;
+    margin-right: 10px;
+    border-radius: 50%;
+
+    &--remuve {
+      background-color: $white;
+      border: none;
+      transform: rotate(45deg);
+      color: $text-primary;
+    }
+  }
+}
+
+input::placeholder {
+  font-size: 14px;
+  letter-spacing: 0;
+  color: $text-secondaty;
+}
+
+@media screen and (max-width: 460px) {
+  .search {
+    margin-top: 4px;
+    position: absolute;
+    transform: translateY(100%);
+    max-width: 460px;
+    width: calc(100vw - 78px);
+    z-index: 4;
+    border: none;
+    border-bottom: 1px solid $elements;
+  }
+}

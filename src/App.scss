@@ -1,0 +1,23 @@
+@import "./helpers/normalize";
+@import "./units";
+
+.App {
+  max-width: 2048px;
+  margin: 0 auto;
+}
+
+.main {
+  padding: 0 152px;
+}
+
+@media screen and (max-width: 959px) {
+  .main {
+    padding: 0 52px;
+  }
+}
+
+@media screen and (max-width: 719px) {
+  .main {
+    padding: 0 24px;
+  }
+}
