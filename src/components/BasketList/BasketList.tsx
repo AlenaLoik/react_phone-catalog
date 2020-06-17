@@ -15,7 +15,7 @@ export const BasketList = () => {
   const removeOneItem = (item: IProduct) => {
     const indexItem = basket.lastIndexOf(item);
 
-    setBasket([...basket].slice(0, (indexItem)).concat([...basket].slice(indexItem + 1)));
+    setBasket(basket.slice(0, (indexItem)).concat(basket.slice(indexItem + 1)));
   };
 
   return (

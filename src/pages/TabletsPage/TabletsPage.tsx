@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TabletsPage.scss';
 
 import { Link, useLocation } from 'react-router-dom';
@@ -14,6 +14,22 @@ type Props = {
 
 export const TabletsPage: React.FC<Props> = ({ tablets }) => {
   const location = useLocation();
+  const [isListPageOpen, setIsListPageOpen] = useState(false);
+  const [isListSortOpen, setIsListSortOpen] = useState(false);
+
+  useEffect(() => {
+    if (isListSortOpen && isListPageOpen) {
+      setIsListPageOpen(false);
+    }
+  }, [isListSortOpen]);
+
+  useEffect(() => {
+    if (isListPageOpen && isListSortOpen) {
+      setIsListSortOpen(false);
+    }
+
+  }, [isListPageOpen]);
+
   const searchParams = new URLSearchParams(location.search);
   const query: string = searchParams.get('query') || '';
   const sort: string = searchParams.get('sort') || '';
@@ -72,8 +88,8 @@ export const TabletsPage: React.FC<Props> = ({ tablets }) => {
               models
             </p>
             <section className="phones-page__sorting">
-              <Sort />
-              <ItemOnPage countItems={tablets.length} />
+              <Sort isListSortOpen={isListSortOpen} setIsListSortOpen={setIsListSortOpen} />
+              <ItemOnPage isListPageOpen={isListPageOpen} setIsListPageOpen={setIsListPageOpen} countItems={tablets.length} />
             </section>
           </>
         )}

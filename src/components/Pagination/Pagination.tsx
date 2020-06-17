@@ -25,7 +25,6 @@ export const Pagination: React.FC<Props> = ({ pageCount }) => {
 
   const handleChangePageArrow = (event: React.MouseEvent<HTMLElement>) => {
    const target = event.target as HTMLTextAreaElement;
-   console.log(page)
 
     searchParams.set('page', `${Number(target.value) + page}`);
     history.push({

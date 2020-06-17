@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PhoneCatalog.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { IProduct } from '../../interfase/interfase';
@@ -13,6 +13,21 @@ type Props = {
 
 export const PhoneCatalog: React.FC<Props> = ({ phones }) => {
   const location = useLocation();
+  const [isListPageOpen, setIsListPageOpen] = useState(false);
+  const [isListSortOpen, setIsListSortOpen] = useState(false);
+
+  useEffect(() => {
+    if (isListSortOpen && isListPageOpen) {
+      setIsListPageOpen(false);
+    }
+  }, [isListSortOpen]);
+
+  useEffect(() => {
+    if (isListPageOpen && isListSortOpen) {
+      setIsListSortOpen(false);
+    }
+
+  }, [isListPageOpen]);
 
   const searchParams = new URLSearchParams(location.search);
   const query: string = searchParams.get('query') || '';
@@ -90,8 +105,8 @@ export const PhoneCatalog: React.FC<Props> = ({ phones }) => {
               models
             </p>
             <section className="phones-page__sorting">
-              <Sort />
-              <ItemOnPage countItems={phones.length} />
+              <Sort isListSortOpen={isListSortOpen} setIsListSortOpen={setIsListSortOpen}/>
+              <ItemOnPage isListPageOpen={isListPageOpen} setIsListPageOpen={setIsListPageOpen} countItems={phones.length} />
             </section>
           </>
         )}

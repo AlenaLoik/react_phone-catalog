@@ -12,11 +12,13 @@ export const Card: React.FC<Props> = ({ item }) => {
   const {
     price, ram, imageUrl, discount, name, screen, capacity, id,
   } = item;
+
   const {
     basket, setBasket, favorites, setFavorites,
   } = useContext(MyContext);
-  const [isFavorites, setIsFavorites] = useState(favorites.filter(product => product.id === item.id).length > 0);
-  const [isItemOnBascket, setIsItemOnBascket] = useState(basket.filter(product => product.id === item.id).length > 0);
+
+  const [isFavorites, setIsFavorites] = useState(false);
+  const [isItemOnBascket, setIsItemOnBascket] = useState(false);
 
   useEffect(() => {
     setIsFavorites(favorites.filter(product => product.id === item.id).length > 0);
